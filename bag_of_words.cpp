@@ -1,3 +1,4 @@
+//George Ignatius
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/nonfree/features2d.hpp"
@@ -22,12 +23,6 @@ vector<Mat> readAllImagesInFolder(string path){
 		name = path + to_string(i) + ".jpg";
 		Images[i - 1] = imread(name);
 	}
-	//namedWindow("images", WINDOW_NORMAL);
-	//for (int i = 0; i < 20; i++){	
-		//imshow("images", Images[i]);
-		//cvWaitKey(0);
-	//}
-
 	return Images;
 }
 
@@ -47,39 +42,6 @@ vector<Mat> readAllImagesInFolder_testing(string path){
 	return Images;
 }
 
-/*
-int classify_image(Mat image, int num_components, PCA *pca, Mat cluster_repesentative, CvKNearest *knn, int K){
-	
-	SIFT sift;
-	vector<cv::KeyPoint>imgKeypoints;
-	Mat imgDiscriptors;
-	vector<cv::KeyPoint>modKeypoints;
-	Mat modDiscriptors;
-	Mat pca_sift_testing;
-	BFMatcher matcher(NORM_L2, false);
-	vector<DMatch> matches;
-	//Assigning a Lable to the pca sift feature based on the Euclidian distance for the centroids of the training clusters in the SIFT_PCA feature space
-	sift(image, noArray(), imgKeypoints, imgDiscriptors);
-	pca->project(imgDiscriptors, pca_sift_testing);
-	matcher.match(pca_sift_testing, cluster_repesentative, matches);
-	
-	//Creating the Histogram for the Test image
-	Mat Hist_testing = Mat::zeros(1,100,CV_32F);
-	for (int j = 0; j < pca_sift_testing.rows; j++){
-		Hist_testing.at<float>(0, matches[j].trainIdx)++;
-	}
-	//cout << "New hist_testing" << "\n";
-	//cout << Hist_testing << "\n";
-
-	Mat Classification_result;
-	Mat neighborResponses; 
-	Mat dists;
-	//CvKNearest knn2;
-	//knn2 = knn;
-	knn->find_nearest(Hist_testing, K, Classification_result, neighborResponses, dists);
-	return Classification_result.at<int>(0);
-}
-*/
 
 int main()
 {
